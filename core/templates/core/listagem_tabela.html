@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    tabela
+{% endblock %}
+
+
+{% block main %}
+    <ul class="list-group">
+
+    {% for i in dados %}
+        <li class="list-group-item">
+        Descrição: {{i.descricao}} <br>
+        Valor:{% if i.valor %} {{i.valor}} {%endif%} <br>
+
+        <a href="{% url 'url_altera_tabela' i.id %}">Editar</a><br>
+        </li>
+    {% endfor %}
+    </ul>
+
+    <button onclick="window.location.href='/'">Home</button>
+{% endblock %}

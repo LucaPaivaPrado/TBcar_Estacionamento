@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    listveiculo
+{% endblock %}
+
+
+{% block main %}
+    <ul class="list-group">
+
+    {% for i in dados %}
+        <li class="list-group-item">
+        Placa: {{i.placa}} <br>
+        Modelo:{% if i.modelo %} {{i.modelo}} {%endif%} <br>
+        Cor :{% if i.cor %} {{i.cor}} {%endif%} <br>
+        Ano:{% if i.ano %} {{i.ano}} {%endif%} <br>
+        Marca:{% if i.marca_id %} {{i.marca_id}} {%endif%} <br>
+        Cliente:{% if i.cliente_id %} {{i.cliente_id}} {%endif%} <br>
+        {% if i.foto %}
+            <img src="{{ i.foto.url }}" width="200" >  <br>
+        {% else %}
+            <img src="{% static 'carro_generico.png' %}" width="200" > <br>
+        {% endif %}
+
+        <a href="{% url 'url_altera_veiculo' i.id %}">Editar</a><br>
+        <a href="{% url 'url_exclui_veiculo' i.id %}">Excluir</a><br>
+        </li>
+    {% endfor %}
+    </ul>
+
+    <button onclick="window.location.href='/'">Home</button>
+{% endblock %}

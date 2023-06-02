@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    listrot
+{% endblock %}
+
+
+{% block main %}
+    <ul class="list-group">
+
+    {% for i in dados %}
+        <li class="list-group-item">
+        Id_veiculo: {{i.id_veiculo}} <br>
+        Id_tabela: {{i.id_tabela}} <br>
+        Entrada: {{i.entrada}} <br>
+        Saida: {{i.saida}} <br>
+        Total: R${{i.total}} <br>
+        Pago: {{i.pago}} <br>
+        Obseracoes: {{i.obseracoes}} <br>
+
+        <a href="{% url 'url_altera_rotativo' i.id %}">Editar</a><br>
+        <a href="{% url 'url_exclui_rotativo' i.id %}">Excluir</a><br>
+
+        </li>
+    {% endfor %}
+    </ul>
+
+    <button onclick="window.location.href='/'">Home</button>
+{% endblock %}

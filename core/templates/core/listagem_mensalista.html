@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    listmensa
+{% endblock %}
+
+
+{% block main %}
+    <ul class="list-group">
+
+    {% for i in dados %}
+        <li class="list-group-item">
+        Id_veiculo: {{i.id_veiculo}} <br>
+        Id_tabela: {{i.id_tabela}} <br>
+        Obseracoes: {{i.obseracoes}} <br>
+
+        <a href="{% url 'url_altera_mensalista' i.id %}">Editar</a><br>
+        <a href="{% url 'url_exclui_mensalista' i.id %}">Excluir</a><br>
+
+        </li>
+    {% endfor %}
+    </ul>
+
+    <button onclick="window.location.href='/'">Home</button>
+{% endblock %}

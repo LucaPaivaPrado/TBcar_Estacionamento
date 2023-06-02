@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{%  load crispy_forms_tags %}
+{% block extrahead %}
+    {{ form.media }}
+{% endblock %}
+
+{% block title %}
+    {{ txt_titulo }}
+{% endblock %}
+
+
+{% block main %}
+<h3>{{ txt_descricao }}</h3>
+
+        <form method="post" enctype="multipart/form-data">
+
+            <div class = 'row'>
+                <div class ='col-12 col-sm-12 col-md-6'>
+                    {{ form.placa|as_crispy_field}}
+                    {{ form.cliente_id|as_crispy_field}}
+                    {{ form.modelo|as_crispy_field}}
+                    {{ form.foto|as_crispy_field}}
+                </div>
+                <div class ='col-12 col-sm-12 col-md-6'>
+                    {{ form.marca_id|as_crispy_field}}
+                    {{ form.cor|as_crispy_field}}
+                    {{ form.ano|as_crispy_field}}
+                </div>
+            </div>
+            <button type="submit">Salvar</button>
+            <button onclick="window.location.href='/'">Home</button>
+        </form>
+
+
+{% endblock %}
